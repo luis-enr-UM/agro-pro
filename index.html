@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroPro Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: #15803d;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        header h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            margin-top: 0.5rem;
+            color: #dcfce7;
+        }
+        
+        /* Sección de productos */
+        .products-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 16rem;
+            object-fit: cover;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+        
+        .composition-box {
+            background-color: #f0fdf4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .composition-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .composition-title {
+            font-weight: 600;
+        }
+        
+        .composition-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .composition-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+        }
+        
+        .composition-percentage {
+            font-weight: 500;
+        }
+        
+        /* Sección de contacto */
+        .contact-section {
+            padding: 4rem 0;
+            background-color: #f3f4f6;
+        }
+        
+        .contact-form-container {
+            max-width: 42rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5);
+        }
+        
+        textarea.form-control {
+            min-height: 6rem;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #16a34a;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #15803d;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #166534;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <i class="fas fa-leaf" style="font-size: 2rem;"></i>
+                <h1>AgroPro Solutions</h1>
+            </div>
+
+            <p>Soluciones agrícolas de alta calidad</p>
+            <a href="/calculator/index.html" class="header-link" style="display: block; text-align:end; margin-top: 1rem;">
+        <img src='/img/Calculator_41154.png' alt="Ir a otro sitio" style="max-height: 50px; width: auto;">
+    </a>
+        </div>
+        
+    </header>
+
+    <!-- Sección de productos -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1000" alt="Fertilizante Orgánico Premium" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Fertilizante Orgánico Premium</h3>
+                        <p class="product-description">Fertilizante orgánico de alta calidad para cultivos intensivos</p>
+                        
+                        <div class="composition-box">
+                            <div class="composition-header">
+                                <i class="fas fa-flask" style="color: #16a34a;"></i>
+                                <h4 class="composition-title">Composición Química</h4>
+                            </div>
+                            <ul class="composition-list">
+                                <li class="composition-item">
+                                    <span>Nitrógeno (N)</span>
+                                    <span class="composition-percentage">15%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Fósforo (P)</span>
+                                    <span class="composition-percentage">10%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Potasio (K)</span>
+                                    <span class="composition-percentage">15%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Materia Orgánica</span>
+                                    <span class="composition-percentage">60%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&q=80&w=1000" alt="Bioestimulante Natural" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Bioestimulante Natural</h3>
+                        <p class="product-description">Estimulante natural para el crecimiento de plantas</p>
+                        
+                        <div class="composition-box">
+                            <div class="composition-header">
+                                <i class="fas fa-flask" style="color: #16a34a;"></i>
+                                <h4 class="composition-title">Composición Química</h4>
+                            </div>
+                            <ul class="composition-list">
+                                <li class="composition-item">
+                                    <span>Aminoácidos</span>
+                                    <span class="composition-percentage">25%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Ácidos Húmicos</span>
+                                    <span class="composition-percentage">30%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Extractos Vegetales</span>
+                                    <span class="composition-percentage">45%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <img src="https://sembralia.com/cdn/shop/articles/fertilizantes1.jpg?v=1648560389" alt="Abono NPK Balanceado" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Abono NPK Balanceado</h3>
+                        <p class="product-description">Fórmula equilibrada para todo tipo de cultivos</p>
+                        
+                        <div class="composition-box">
+                            <div class="composition-header">
+                                <i class="fas fa-flask" style="color: #16a34a;"></i>
+                                <h4 class="composition-title">Composición Química</h4>
+                            </div>
+                            <ul class="composition-list">
+                                <li class="composition-item">
+                                    <span>Nitrógeno (N)</span>
+                                    <span class="composition-percentage">12%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Fósforo (P)</span>
+                                    <span class="composition-percentage">12%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Potasio (K)</span>
+                                    <span class="composition-percentage">12%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Micronutrientes</span>
+                                    <span class="composition-percentage">5%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Relleno inerte</span>
+                                    <span class="composition-percentage">59%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&q=80&w=1000" alt="Enraizador Natural" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Enraizador Natural</h3>
+                        <p class="product-description">Promueve el desarrollo radicular en esquejes y trasplantes</p>
+                        
+                        <div class="composition-box">
+                            <div class="composition-header">
+                                <i class="fas fa-flask" style="color: #16a34a;"></i>
+                                <h4 class="composition-title">Composición Química</h4>
+                            </div>
+                            <ul class="composition-list">
+                                <li class="composition-item">
+                                    <span>Hormonas vegetales</span>
+                                    <span class="composition-percentage">8%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Algas marinas</span>
+                                    <span class="composition-percentage">35%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Vitaminas</span>
+                                    <span class="composition-percentage">12%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Aminoácidos</span>
+                                    <span class="composition-percentage">45%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <img src="https://lh6.googleusercontent.com/3pdZlJ4u-xwNR9erfFrrAZ99oJ2fdgAMlCAYhz0as6sIgmJi-WDd2nZjFIT9ZODgR_nyvgj9BayRBL91D-Fck_DJCLwPNhnAUsjo-SUks6knSEmQ4AjS5YgI6ix4Y9dc70TnyqVh7y6PwNJjvuWUgFw" alt="Corrector de Carencias" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Corrector de Carencias</h3>
+                        <p class="product-description">Soluciona deficiencias nutricionales en plantas</p>
+                        
+                        <div class="composition-box">
+                            <div class="composition-header">
+                                <i class="fas fa-flask" style="color: #16a34a;"></i>
+                                <h4 class="composition-title">Composición Química</h4>
+                            </div>
+                            <ul class="composition-list">
+                                <li class="composition-item">
+                                    <span>Hierro (Fe)</span>
+                                    <span class="composition-percentage">10%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Manganeso (Mn)</span>
+                                    <span class="composition-percentage">5%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Zinc (Zn)</span>
+                                    <span class="composition-percentage">5%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Cobre (Cu)</span>
+                                    <span class="composition-percentage">3%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Boro (B)</span>
+                                    <span class="composition-percentage">2%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Molibdeno (Mo)</span>
+                                    <span class="composition-percentage">1%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Vehiculante</span>
+                                    <span class="composition-percentage">74%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 6 -->
+                <div class="product-card">
+                    <img src="https://mineravi.com/cdn/shop/products/protector-plantas-humedad-fungida1280x853.jpg?v=1728109503" alt="Protector Fungicida" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Protector Fungicida</h3>
+                        <p class="product-description">Prevención y tratamiento de enfermedades fúngicas</p>
+                        
+                        <div class="composition-box">
+                            <div class="composition-header">
+                                <i class="fas fa-flask" style="color: #16a34a;"></i>
+                                <h4 class="composition-title">Composición Química</h4>
+                            </div>
+                            <ul class="composition-list">
+                                <li class="composition-item">
+                                    <span>Cobre</span>
+                                    <span class="composition-percentage">25%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Azufre</span>
+                                    <span class="composition-percentage">15%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Extractos de cola de caballo</span>
+                                    <span class="composition-percentage">10%</span>
+                                </li>
+                                <li class="composition-item">
+                                    <span>Adherente</span>
+                                    <span class="composition-percentage">50%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de contacto -->
+    <section class="contact-section">
+        <div class="container contact-form-container">
+            <h2 class="section-title">Consulta sobre Deficiencias en Productos</h2>
+            <form id="contactForm" class="contact-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product">Producto</label>
+                        <select id="product" class="form-control" required>
+                            <option value="">Seleccione un producto</option>
+                            <option value="Fertilizante Orgánico Premium">Fertilizante Orgánico Premium</option>
+                            <option value="Bioestimulante Natural">Bioestimulante Natural</option>
+                            <option value="Abono NPK Balanceado">Abono NPK Balanceado</option>
+                            <option value="Enraizador Natural">Enraizador Natural</option>
+                            <option value="Corrector de Carencias">Corrector de Carencias</option>
+                            <option value="Protector Fungicida">Protector Fungicida</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Descripción de Deficiencias</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Consulta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-leaf"></i>
+                    <span>AgroPro Solutions</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-phone"></i>
+                    <span>Contacto: +5358784465</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Manejo del formulario
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                product: document.getElementById('product').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Form submitted:', formData);
+            alert('Gracias por su mensaje. Nos pondremos en contacto pronto.');
+            
+            // Resetear el formulario
+            this.reset();
+        });
+    </script>
+    <script src="./js/animaciones.js"></script>
+
+</body>
+</html>
