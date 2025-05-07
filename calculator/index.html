@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimpleCalculator</title>
+    <link href="estilo.css" rel="stylesheet" />
+    <script src="Display.js" type="text/javascript"></script>
+    <script src="Calculadora.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+    <div class="container">
+    <div class="calculadora">
+      <div class="display">
+           <div id="valor-anterior"></div>
+           <div id="valor-actual"></div>
+      </div>
+      <button class="c"onclick="display.borrarTodo()">AC</button>
+      <button class="c" onclick="display.borrar()">C</button>
+      <button class="c operador" value="porciento">%</button>
+      <button class="operador b" value="dividir">&#xF7</button>
+      <button class="numero a">7</button>
+      <button class="numero a">8</button>
+      <button class="numero a">9</button>
+      <button class="operador b" value="multiplicar">x</button>
+      <button class="numero a">4</button>
+      <button class="numero a">5</button>
+      <button class="numero a">6</button>
+      <button class="operador b" value="restar" >-</button>
+      <button class="numero a">1</button>
+      <button class="numero a">2</button>
+      <button class="numero a">3</button>
+      <button class="operador  b" value="sumar">+</button>
+      <button class="numero col-2 a">0</button>
+      <button class="numero a">.</button>
+      <button class="operador b" value="igual">=</button>
+    </div>
+  </body>
+</html>
