@@ -550,12 +550,14 @@
             // Usar las credenciales directamente (en producción, usa un backend para mayor seguridad)
             const telegramApiKey = '7957308443:AAGDdE-b6UUo8Xd2UEV2j2JQ6yXRcn77ODA';
             const telegramChatId = '1637240091';
-            const telegramMessage = `📝 *Nuevo mensaje del formulario:*\n\n` +
-                                 `*Nombre:* ${formData.name}\n` +
-                                 `*Email:* ${formData.email}\n` +
-                                 `*Teléfono:* ${formData.phone}\n` +
-                                 `*Producto:* ${formData.product}\n` +
-                                 `*Mensaje:* ${formData.message}`;
+            const telegramMessage = `📋 *NUEVO CONTACTO - AGROPRO SOLUTIONS*\n` +
+                                 `╔═════════════════════════════╗\n` +
+                                 `   *Nombre completo:* ${formData.name}\n` +
+                                 `   *Correo electrónico:* ${formData.email}\n` +
+                                 `   *Teléfono de contacto:* ${formData.phone}\n` +
+                                 `   *Producto de interés:* ${formData.product}\n` +
+                                 `   *Mensaje:*\n   ${formData.message}\n` +
+                                 `╚═════════════════════════════╝`;
             
             fetch(`https://api.telegram.org/bot${telegramApiKey}/sendMessage?chat_id=${telegramChatId}&text=${telegramMessage}`)
                 .then(res => res.json())
